@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+<head>
+
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+<title>MEDFIT - Alunos</title>
+
+<link rel="stylesheet"
+    href="cadastro.css">
+
+
+</head>
+
+<body>
+
+<!-- MENU -->
+
+<button id="menuBtn"
+ class="menu-btn">
+
+
+<span></span>
+<span></span>
+<span></span>
+
+
+</button>
+
+<div id="overlay"></div>
+
+<aside id="sidebar">
+
+
+<div class="sidebar-header">
+
+    <h2>MEDFIT</h2>
+
+    <p>
+        Transforme resultados
+    </p>
+
+</div>
+
+<nav>
+
+    <a href="index.html">
+        🏠 Dashboard
+    </a>
+
+    <a href="aulas.html">
+        📅 Aulas
+    </a>
+
+    <a href="cadastro.html">
+        👨‍🎓 Alunos
+    </a>
+
+    <a href="personais.html">
+        🏋️ Instrutores
+    </a>
+
+    <a href="planos.html">
+        💳 Planos
+    </a>
+
+</nav>
+
+<div class="logout">
+
+    <a href="login.html">
+        🚪 Sair
+    </a>
+
+</div>
+
+
+</aside>
+
+<!-- HEADER -->
+
+<header>
+
+
+<h1>
+    MEDFIT
+</h1>
+
+
+</header>
+
+<!-- HERO -->
+
+<section class="hero">
+
+
+<div class="hero-content">
+
+    <span class="hero-tag">
+        MEDFIT PERFORMANCE
+    </span>
+
+    <h2>
+
+        GERENCIE
+        <span>ALUNOS</span>
+
+    </h2>
+
+    <p>
+
+        Controle completo dos alunos,
+        planos e informações cadastrais.
+
+    </p>
+
+    <button
+        id="btnNovoAluno"
+        class="btn-hero">
+
+        + Novo Aluno
+
+    </button>
+
+</div>
+
+
+</section>
+
+<!-- CONTAINER -->
+
+<div class="container-cadastro">
+
+
+<div class="titulo-lista">
+
+    <h2>
+        Alunos Cadastrados
+    </h2>
+
+    <p>
+        Visualize, edite e gerencie todos os alunos.
+    </p>
+
+</div>
+
+<div class="tabela-container">
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>Nome</th>
+
+                <th>CPF</th>
+
+                <th>Nascimento</th>
+
+                <th>Sexo</th>
+
+                <th>Telefone</th>
+
+                <th>Endereço</th>
+
+                <th>Status</th>
+
+                <th>Plano</th>
+
+                <th>Ações</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody id="tabelaAlunos"></tbody>
+
+    </table>
+
+</div>
+
+
+</div>
+
+<!-- MODAL CADASTRO -->
+
+<div class="modal"
+    id="modalCadastro">
+
+
+<div class="modal-content">
+
+    <span
+        class="fechar"
+        id="fecharCadastro">
+
+        &times;
+
+    </span>
+
+    <h2>
+        Novo Aluno
+    </h2>
+
+    <div class="form-grid">
+
+        <input
+            type="text"
+            id="nome"
+            placeholder="Nome">
+
+        <input
+            type="text"
+            id="cpf"
+            placeholder="CPF">
+
+        <input
+            type="date"
+            id="dataNascimento">
+
+        <select id="sexo">
+
+            <option value="M">
+                Masculino
+            </option>
+
+            <option value="F">
+                Feminino
+            </option>
+
+        </select>
+
+        <input
+            type="text"
+            id="telefone"
+            placeholder="Telefone">
+
+        <input
+            type="text"
+            id="endereco"
+            placeholder="Endereço">
+
+        <select id="status">
+
+            <option value="ativo">
+                Ativo
+            </option>
+
+            <option value="inativo">
+                Inativo
+            </option>
+
+        </select>
+
+        <input
+            type="text"
+            id="senha"
+            placeholder="Plano">
+
+        <button id="salvarAluno">
+
+            Salvar
+
+        </button>
+
+    </div>
+
+</div>
+
+
+</div>
+
+<!-- MODAL EDITAR -->
+
+<div class="modal"
+    id="modalEditar">
+
+
+<div class="modal-content">
+
+    <span
+        class="fechar"
+        id="fecharEditar">
+
+        &times;
+
+    </span>
+
+    <h2>
+        Editar Aluno
+    </h2>
+
+    <div class="form-grid">
+
+        <input
+            type="hidden"
+            id="editId">
+
+        <input
+            type="text"
+            id="editNome">
+
+        <input
+            type="text"
+            id="editCpf">
+
+        <input
+            type="date"
+            id="editDataNascimento">
+
+        <select id="editSexo">
+
+            <option value="M">
+                Masculino
+            </option>
+
+            <option value="F">
+                Feminino
+            </option>
+
+        </select>
+
+        <input
+            type="text"
+            id="editTelefone">
+
+        <input
+            type="text"
+            id="editEndereco">
+
+        <select id="editStatus">
+
+            <option value="ativo">
+                Ativo
+            </option>
+
+            <option value="inativo">
+                Inativo
+            </option>
+
+        </select>
+
+        <input
+            type="password"
+            id="editSenha">
+
+        <button id="salvarEdicao">
+
+            Salvar Alterações
+
+        </button>
+
+    </div>
+
+</div>
+
+
+</div>
+
+<script src="cadastro.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Planos - MEDFIT</title>
+<link rel="stylesheet" href="planos.css">
+</head>
+
+<body>
+
+<button id="menuBtn" class="menu-btn"> <span></span> <span></span> <span></span> </button> <div id="overlay"></div> <aside id="sidebar">
+<div class="sidebar-header">
+    <h2>MEDFIT</h2>
+    <p>Transforme resultados</p>
+</div>
+
+<nav>
+
+    <a href="index.html">🏠 Dashboard</a>
+
+    <a href="aulas.html">📅 Aulas</a>
+
+    <a href="cadastro.html">👨‍🎓 Alunos</a>
+
+    <a href="personais.html">🏋️ Instrutores</a>
+
+    <a href="planos.html">💳 Planos</a>
+
+    <a href="nota.html">📝 Notas</a>
+
+</nav>
+
+<div class="logout">
+    <a href="login.html">🚪 Sair</a>
+</div>
+</aside> <header> <h1>MEDFIT</h1> </header> <section class="hero">
+<div class="hero-content">
+
+    <span class="hero-tag">
+        MEDFIT PERFORMANCE
+    </span>
+
+    <h2>
+        NOSSOS
+        <span>PLANOS</span>
+    </h2>
+
+    <p>
+        Escolha o plano ideal para seus objetivos.
+    </p>
+
+    <button
+        id="btnNovoPlano"
+        class="btn-hero"
+        onclick="abrirModal()">
+
+        + Novo Plano
+
+    </button>
+
+</div>
+</section>
+
+<section class="planosPagina">
+
+<h2 class="section-title">Nossos Planos</h2>
+
+<div class="topo">
+    <button class="btn-add" onclick="abrirModal()">
+        ➕ Adicionar Plano
+    </button>
+</div>
+
+<div class="planosContainer"></div>
+
+</section>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+    <div class="modal-content">
+
+        <h3>Plano</h3>
+
+        <input type="number" id="valor" placeholder="Valor">
+        <input type="number" id="duracao" placeholder="Duração">
+        <input type="text" id="descricao" placeholder="Descrição">
+
+        <button onclick="salvarPlano()">Salvar</button>
+        <button class="fechar" onclick="fecharModal()">Cancelar</button>
+
+    </div>
+</div>
+
+<script src="planos.js"></script>
+
+</body>
+</html>

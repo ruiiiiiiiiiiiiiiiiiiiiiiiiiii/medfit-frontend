@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trocar Senha - MedFit</title>
+
+    <link rel="stylesheet" href="trocarSenha.css">
+</head>
+
+<body>
+
+    <div class="background"></div>
+
+    <div class="container">
+
+        <div class="card">
+
+            <div class="logo">
+                <div class="pulse"></div>
+                <h1>MEDFIT</h1>
+                <p>ALTERAÇÃO DE SENHA</p>
+            </div>
+
+            <div class="inputBox">
+                <label>NOVA SENHA</label>
+                <div class="input">
+                    <span>🔒</span>
+                    <input type="password" id="novaSenha" placeholder="Digite a nova senha">
+                </div>
+            </div>
+
+            <div class="inputBox">
+                <label>CONFIRMAR SENHA</label>
+                <div class="input">
+                    <span>🔒</span>
+                    <input type="password" id="confirmarSenha" placeholder="Confirme a senha">
+                </div>
+            </div>
+
+            <button onclick="trocarSenha()">SALVAR SENHA</button>
+
+            <p class="footer">SEGURANÇA DO SISTEMA</p>
+
+        </div>
+
+    </div>
+
+    <script src="trocarSenha.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Painel Admin - Notas</title>
+    <link rel="stylesheet" href="nota.css">
+</head>
+<body>
+    <!-- MENU -->
+
+<button id="menuBtn" class="menu-btn">
+
+    <span></span>
+    <span></span>
+    <span></span>
+
+</button>
+
+<div id="overlay"></div>
+
+<aside id="sidebar">
+
+    <div class="sidebar-header">
+
+        <h2>MEDFIT</h2>
+
+        <p>
+            Transforme resultados
+        </p>
+
+    </div>
+
+    <nav>
+
+        <a href="index.html">
+            🏠 Dashboard
+        </a>
+
+        <a href="aulas.html">
+            📅 Aulas
+        </a>
+
+        <a href="cadastro.html">
+            👨‍🎓 Alunos
+        </a>
+
+        <a href="personais.html">
+            🏋️ Instrutores
+        </a>
+
+        <a href="planos.html">
+            💳 Planos
+        </a>
+
+        <a href="nota.html">
+            📝 Notas
+        </a>
+
+    </nav>
+
+    <div class="logout">
+
+        <a href="login.html">
+            🚪 Sair
+        </a>
+
+    </div>
+
+</aside>
+
+    <div class="container">
+        <h1>Painel de Notas</h1>
+
+        <form id="formNota">
+            <input type="text" id="titulo" placeholder="Título" required>
+
+            <textarea id="descricao" placeholder="Descrição" required></textarea>
+
+            <div class="linha">
+                <select id="tipo">
+                    <option value="critica">Crítica</option>
+                    <option value="observacao">Observação</option>
+                    <option value="sugestao">Sugestão</option>
+                    <option value="incidente">Incidente</option>
+                </select>
+
+                <select id="prioridade">
+                    <option value="baixa">Baixa</option>
+                    <option value="media">Média</option>
+                    <option value="alta">Alta</option>
+                </select>
+            </div>
+
+            <input type="text" id="setor" placeholder="Setor">
+
+            <div class="botoes">
+                <button type="submit" id="btnSalvar">Salvar Nota</button>
+                <button type="button" id="btnCancelar" class="cancelar">Cancelar</button>
+            </div>
+        </form>
+
+        <h2>Lista de Notas</h2>
+        <div id="listaNotas"></div>
+    </div>
+
+    <script src="nota.js"></script>
+</body>
+</html>

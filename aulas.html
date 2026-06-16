@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEDFIT - Aulas</title>
+
+    <link rel="stylesheet" href="aulas.css">
+</head>
+
+<body>
+    <button id="menuBtn" class="menu-btn">
+
+    <span></span>
+    <span></span>
+    <span></span>
+
+</button>
+
+<div id="overlay"></div>
+
+<aside id="sidebar">
+
+    <div class="sidebar-header">
+
+        <h2>MEDFIT</h2>
+
+        <p>
+            Transforme resultados
+        </p>
+
+    </div>
+
+    <nav>
+
+        <a href="index.html">
+            🏠 Dashboard
+        </a>
+
+        <a href="aulas.html">
+            📅 Aulas
+        </a>
+
+        <a href="personais.html">
+            🏋️ Instrutores
+        </a>
+
+        <a href="planos.html">
+            💳 Planos
+        </a>
+
+        <a href="cadastro.html">
+            📋 Cadastros
+        </a>
+
+    </nav>
+
+    <div class="logout">
+
+        <a href="login.html">
+            🚪 Sair
+        </a>
+
+    </div>
+
+</aside>
+
+
+    <header>
+        <h1>MEDFIT</h1>
+    </header>
+
+    <section class="hero">
+
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+
+            <span class="hero-tag">
+                MEDFIT PERFORMANCE
+            </span>
+
+            <h2>
+                GERENCIE SUAS
+                <span>AULAS</span>
+            </h2>
+
+            <p>
+                Controle alunos, instrutores e agendamentos
+                em um único lugar.
+            </p>
+
+            <button
+                class="btn-hero"
+                onclick="abrirModal()">
+
+                + Nova Aula
+
+            </button>
+
+        </div>
+
+    </section>
+
+    <section class="banner">
+
+        <div class="banner-text">
+
+            <h3>
+                Transforme organização em resultados
+            </h3>
+
+            <p>
+                Controle completo de aulas,
+                alunos e instrutores.
+            </p>
+
+        </div>
+
+    </section>
+
+    <div class="container">
+
+        <div class="titulo-lista">
+
+            <h2>
+                Aulas Agendadas
+            </h2>
+
+            <p>
+                Visualize e gerencie todas as aulas.
+            </p>
+
+        </div>
+
+        <div
+            class="grid"
+            id="listaAulas">
+
+        </div>
+
+    </div>
+
+    <div
+        class="modal"
+        id="modal">
+
+        <div class="modal-content">
+
+            <h2>
+                Cadastrar Aula
+            </h2>
+
+            <div class="form-grid">
+
+                <div class="full">
+
+                    <label>Aluno</label>
+
+                    <select id="id_aluno">
+
+                        <option value="">
+                            Selecione um aluno
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div>
+
+                    <label>Telefone</label>
+
+                    <input
+                        type="text"
+                        id="telefone">
+
+                </div>
+
+                <div>
+
+                    <label>Tipo da Aula</label>
+
+                    <select id="tipo_aula">
+
+                        <option value="">
+                            Escolha a aula
+                        </option>
+
+                        <option value="Musculação">
+                            Musculação
+                        </option>
+
+                        <option value="Funcional">
+                            Funcional
+                        </option>
+
+                        <option value="Pilates">
+                            Pilates
+                        </option>
+
+                        <option value="Crossfit">
+                            Crossfit
+                        </option>
+
+                        <option value="Zumba">
+                            Zumba
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div>
+
+                    <label>ID Instrutor</label>
+
+                    <input
+                        type="number"
+                        id="id_instrutor">
+
+                </div>
+
+                <div>
+
+                    <label>Data Início</label>
+
+                    <input
+                        type="date"
+                        id="data_inicio">
+
+                </div>
+
+                <div>
+
+                    <label>Data Fim</label>
+
+                    <input
+                        type="date"
+                        id="data_fim">
+
+                </div>
+
+                <div class="full">
+
+                    <label>Status</label>
+
+                    <select id="status">
+
+                        <option value="agendada">
+                            Agendada
+                        </option>
+
+                        <option value="concluida">
+                            Concluída
+                        </option>
+
+                        <option value="cancelada">
+                            Cancelada
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+            <div class="modal-buttons">
+
+                <button
+                    class="btn btn-cancel"
+                    onclick="fecharModal()">
+
+                    Cancelar
+
+                </button>
+
+                <button
+                    class="btn btn-primary"
+                    onclick="salvarAula()">
+
+                    Salvar
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="aulas.js"></script>
+
+</body>
+
+</html>

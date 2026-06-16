@@ -1,0 +1,356 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:#111;
+color:white;
+min-height:100vh;
+}
+
+/* HERO */
+
+.container{
+width:90%;
+max-width:1200px;
+margin:50px auto;
+}
+
+h1{
+font-size:60px;
+font-weight:900;
+text-align:center;
+margin-bottom:40px;
+}
+
+h2{
+font-size:40px;
+margin:50px 0 25px;
+}
+
+/* FORM */
+
+form{
+background:#1c1c1c;
+border:1px solid #2e2e2e;
+border-radius:25px;
+padding:30px;
+display:flex;
+flex-direction:column;
+gap:18px;
+box-shadow:0 15px 30px rgba(0,0,0,.3);
+}
+
+input,
+textarea,
+select{
+width:100%;
+background:#252525;
+border:1px solid #333;
+border-radius:12px;
+padding:15px;
+font-size:15px;
+color:white;
+transition:.3s;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+outline:none;
+border-color:#ff5e00;
+box-shadow:0 0 12px rgba(255,94,0,.25);
+}
+
+textarea{
+height:130px;
+resize:none;
+}
+
+.linha{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+}
+
+.botoes{
+display:flex;
+gap:15px;
+margin-top:10px;
+}
+
+button{
+border:none;
+cursor:pointer;
+font-weight:bold;
+transition:.3s;
+}
+
+#btnSalvar{
+flex:1;
+height:55px;
+border-radius:12px;
+background:#ff5e00;
+color:white;
+font-size:16px;
+}
+
+#btnSalvar:hover{
+transform:translateY(-2px);
+box-shadow:0 10px 20px rgba(255,94,0,.4);
+}
+
+.cancelar{
+flex:1;
+height:55px;
+border-radius:12px;
+background:#444;
+color:white;
+}
+
+.cancelar:hover
+
+/* LISTA */
+
+#listaNotas{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(350px,1fr));
+gap:20px;
+}
+
+.nota{
+background:#1c1c1c;
+border:1px solid #2e2e2e;
+border-radius:20px;
+padding:25px;
+transition:.3s;
+}
+
+.nota:hover{
+transform:translateY(-5px);
+border-color:#ff5e00;
+}
+
+.nota h3{
+font-size:24px;
+margin-bottom:12px;
+color:white;
+}
+
+.nota p{
+color:#ccc;
+line-height:1.6;
+margin-bottom:15px;
+}
+
+.nota small{
+display:block;
+margin-bottom:8px;
+color:#999;
+}
+
+.acoes{
+display:flex;
+gap:10px;
+margin-top:20px;
+}
+
+.editar-btn{
+flex:1;
+background:#0d6efd;
+color:white;
+padding:12px;
+border-radius:10px;
+font-weight:bold;
+}
+
+.editar-btn:hover
+
+.delete-btn{
+flex:1;
+background:#dc3545;
+color:white;
+padding:12px;
+border-radius:10px;
+font-weight:bold;
+}
+
+.delete-btn:hover
+
+/* PRIORIDADES */
+
+.nota.alta{
+border-left:5px solid #dc3545;
+}
+
+.nota.media{
+border-left:5px solid #ffc107;
+}
+
+.nota.baixa{
+border-left:5px solid #198754;
+}
+
+/* RESPONSIVO */
+
+@media(max-width:768px){
+
+h1{
+font-size:40px;
+}
+
+h2{
+font-size:28px;
+}
+
+.linha{
+grid-template-columns:1fr;
+}
+
+.botoes{
+flex-direction:column;
+}
+
+#listaNotas{
+grid-template-columns:1fr;
+}
+
+}
+/* =========================
+MENU LATERAL
+========================= */
+
+.menu-btn{
+    position:fixed;
+    top:25px;
+    right:25px;
+    width:60px;
+    height:60px;
+    border:none;
+    border-radius:50%;
+    background:rgba(0,0,0,.75);
+    backdrop-filter:blur(10px);
+    cursor:pointer;
+    z-index:2000;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:6px;
+}
+
+.menu-btn span{
+    width:26px;
+    height:3px;
+    background:white;
+    border-radius:10px;
+}
+
+#overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.6);
+    backdrop-filter:blur(3px);
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:.3s;
+    z-index:1500;
+}
+
+#overlay.active{
+    opacity:1;
+    visibility:visible;
+}
+
+#sidebar{
+    position:fixed;
+    top:0;
+    right:-340px;
+
+    width:320px;
+    height:100vh;
+
+    background:rgba(15,15,15,.97);
+    backdrop-filter:blur(20px);
+
+    border-left:1px solid #2a2a2a;
+
+    transition:.35s;
+
+    z-index:1800;
+
+    display:flex;
+    flex-direction:column;
+}
+
+#sidebar.active{
+    right:0;
+}
+
+.sidebar-header{
+    padding:40px 30px;
+    border-bottom:1px solid #2a2a2a;
+}
+
+.sidebar-header h2{
+    color:#ff5e00;
+    font-size:34px;
+}
+
+.sidebar-header p{
+    color:#aaa;
+    margin-top:5px;
+}
+
+#sidebar nav{
+    padding:20px;
+}
+
+#sidebar nav a{
+    display:flex;
+    align-items:center;
+
+    padding:18px;
+
+    margin-bottom:10px;
+
+    border-radius:15px;
+
+    color:white;
+    text-decoration:none;
+
+    transition:.25s;
+
+    font-size:18px;
+}
+
+#sidebar nav a:hover{
+    background:#ff5e00;
+    transform:translateX(-5px);
+}
+
+.logout{
+    margin-top:auto;
+    padding:20px;
+}
+
+.logout a{
+    display:block;
+    text-decoration:none;
+
+    background:#dc3545;
+    color:white;
+
+    padding:18px;
+
+    border-radius:15px;
+
+    text-align:center;
+    font-weight:bold;
+}
