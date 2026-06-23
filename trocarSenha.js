@@ -1,4 +1,5 @@
-const API_URL = "http://localhost:3000/usuarios/trocar-senha";
+const API_URL =
+"https://back-end-academia-six.vercel.app/usuarios/trocar-senha";
 
 async function trocarSenha() {
 
