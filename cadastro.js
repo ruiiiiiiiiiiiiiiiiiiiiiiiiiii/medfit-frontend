@@ -1,4 +1,5 @@
-const API_URL = "http://localhost:3000";
+const API_URL =
+"https://back-end-academia-six.vercel.app/alunos";
 
 const usuario = JSON.parse(localStorage.getItem("usuario"));
 

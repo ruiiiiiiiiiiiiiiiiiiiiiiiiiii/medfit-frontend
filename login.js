@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:3000/login";
+const API_URL = "https://back-end-academia-six.vercel.app/login";
 
 async function login() {
 

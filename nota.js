@@ -3,44 +3,46 @@ localStorage.getItem("usuario")
 );
 
 if (!usuario) {
+
 window.location.href = "login.html";
+
 }
 
+// APENAS ADMIN ACESSA NOTAS
 if (usuario.tipo !== "admin") {
-
-alert(
-    "Acesso permitido apenas para administradores."
-);
 
 window.location.href = "index.html";
 
 }
+
 // ESCONDER LINKS DO MENU
 
 if(usuario.tipo === "aluno"){
 
-    document.querySelector(
-        'a[href="personais.html"]'
-    )?.remove();
+document.querySelector(
+    'a[href="personais.html"]'
+)?.remove();
 
-    document.querySelector(
-        'a[href="nota.html"]'
-    )?.remove();
+document.querySelector(
+    'a[href="notas.html"]'
+)?.remove();
+
 }
 
 if(usuario.tipo === "instrutor"){
 
-    document.querySelector(
-        'a[href="cadastro.html"]'
-    )?.remove();
+document.querySelector(
+    'a[href="cadastro.html"]'
+)?.remove();
 
-    document.querySelector(
-        'a[href="nota.html"]'
-    )?.remove();
+document.querySelector(
+    'a[href="notas.html"]'
+)?.remove();
+
 }
 
 const API =
-"http://localhost:3000/notas";
+"https://back-end-academia-six.vercel.app/notas";
 
 const form =
 document.getElementById("formNota");
@@ -64,101 +66,102 @@ async function carregarNotas() {
 
 try {
 
-    const res =
-    await fetch(API);
+const res =
+await fetch(API);
 
-    if (!res.ok) {
-        throw new Error(
-            "Erro ao carregar notas"
-        );
-    }
+if (!res.ok) {
+    throw new Error(
+        "Erro ao carregar notas"
+    );
+}
 
-    const data =
-    await res.json();
+const data =
+await res.json();
 
-    lista.innerHTML = "";
+lista.innerHTML = "";
 
-    data.notas.forEach(nota => {
+data.notas.forEach(nota => {
 
-        const div =
-        document.createElement("div");
+    const div =
+    document.createElement("div");
 
-        div.className =
-        `nota ${nota.prioridade}`;
+    div.className =
+    `nota ${nota.prioridade}`;
 
-        div.innerHTML = `
+    div.innerHTML = `
 
-            <h3>${nota.titulo}</h3>
+        <h3>${nota.titulo}</h3>
 
-            <p>
-                ${nota.descricao}
-            </p>
+        <p>
+            ${nota.descricao}
+        </p>
 
-            <small>
-                Tipo:
-                ${nota.tipo}
-            </small>
+        <small>
+            Tipo:
+            ${nota.tipo}
+        </small>
 
-            <small>
-                Prioridade:
-                ${nota.prioridade}
-            </small>
+        <small>
+            Prioridade:
+            ${nota.prioridade}
+        </small>
 
-            <small>
-                Setor:
-                ${nota.setor || "N/A"}
-            </small>
+        <small>
+            Setor:
+            ${nota.setor || "N/A"}
+        </small>
 
-            <div class="acoes">
+        <div class="acoes">
 
-                <button
-                    class="editar-btn"
-                    onclick="editarNota(
-                        ${nota.id},
-                        ${JSON.stringify(nota.titulo)},
-                        ${JSON.stringify(nota.descricao)},
-                        ${JSON.stringify(nota.tipo)},
-                        ${JSON.stringify(nota.prioridade)},
-                        ${JSON.stringify(nota.setor || "")}
-                    )">
+            <button
+                class="editar-btn"
+                onclick="editarNota(
+                    ${nota.id},
+                    ${JSON.stringify(nota.titulo)},
+                    ${JSON.stringify(nota.descricao)},
+                    ${JSON.stringify(nota.tipo)},
+                    ${JSON.stringify(nota.prioridade)},
+                    ${JSON.stringify(nota.setor || "")}
+                )">
 
-                    Editar
+                Editar
 
-                </button>
+            </button>
 
-                <button
-                    class="delete-btn"
-                    onclick="excluirNota(${nota.id})">
+            <button
+                class="delete-btn"
+                onclick="excluirNota(${nota.id})">
 
-                    Excluir
+                Excluir
 
-                </button>
+            </button>
 
-            </div>
-        `;
+        </div>
+    `;
 
-        lista.appendChild(div);
-    });
+    lista.appendChild(div);
+});
 
 } catch (erro) {
 
-    console.error(erro);
+console.error(erro);
 
-    lista.innerHTML = `
+lista.innerHTML = `
 
-        <div class="nota">
+    <div class="nota">
 
-            <h3>
-                Erro
-            </h3>
+        <h3>
+            Erro
+        </h3>
 
-            <p>
-                Não foi possível carregar as notas.
-            </p>
+        <p>
+            Não foi possível carregar as notas.
+        </p>
 
-        </div>
+    </div>
 
-    `;
+`;
+
 }
 
 }
@@ -197,8 +200,8 @@ btnSalvar.textContent =
 "Atualizar Nota";
 
 window.scrollTo({
-    top:0,
-    behavior:"smooth"
+top:0,
+behavior:"smooth"
 });
 
 }
@@ -211,14 +214,14 @@ btnCancelar.addEventListener(
 "click",
 () => {
 
-    form.reset();
+form.reset();
 
-    editandoId = null;
+editandoId = null;
 
-    btnSalvar.textContent =
-    "Salvar Nota";
+btnSalvar.textContent =
+"Salvar Nota";
+
 }
-
 );
 
 /* =========================
@@ -230,95 +233,95 @@ form.addEventListener(
 
 async (e) => {
 
-    e.preventDefault();
+e.preventDefault();
 
-    const nota = {
+const nota = {
 
-        titulo:
-        document.getElementById("titulo")
-        .value.trim(),
+    titulo:
+    document.getElementById("titulo")
+    .value.trim(),
 
-        descricao:
-        document.getElementById("descricao")
-        .value.trim(),
+    descricao:
+    document.getElementById("descricao")
+    .value.trim(),
 
-        tipo:
-        document.getElementById("tipo")
-        .value,
+    tipo:
+    document.getElementById("tipo")
+    .value,
 
-        prioridade:
-        document.getElementById("prioridade")
-        .value,
+    prioridade:
+    document.getElementById("prioridade")
+    .value,
 
-        status:"ativo",
+    status:"ativo",
 
-        criado_por:"admin",
+    criado_por:"admin",
 
-        setor:
-        document.getElementById("setor")
-        .value.trim(),
+    setor:
+    document.getElementById("setor")
+    .value.trim(),
 
-        visivel_para_todos:true,
+    visivel_para_todos:true,
 
-        observacoes_internas:""
-    };
+    observacoes_internas:""
+};
 
-    try {
+try {
 
-        if (editandoId) {
+    if (editandoId) {
 
-            await fetch(
-                `${API}/${editandoId}`,
-                {
-                    method:"PUT",
+        await fetch(
+            `${API}/${editandoId}`,
+            {
+                method:"PUT",
 
-                    headers:{
-                        "Content-Type":
-                        "application/json"
-                    },
+                headers:{
+                    "Content-Type":
+                    "application/json"
+                },
 
-                    body:
-                    JSON.stringify(nota)
-                }
-            );
+                body:
+                JSON.stringify(nota)
+            }
+        );
 
-            editandoId = null;
+        editandoId = null;
 
-            btnSalvar.textContent =
-            "Salvar Nota";
+        btnSalvar.textContent =
+        "Salvar Nota";
 
-        } else {
+    } else {
 
-            await fetch(
-                API,
-                {
-                    method:"POST",
+        await fetch(
+            API,
+            {
+                method:"POST",
 
-                    headers:{
-                        "Content-Type":
-                        "application/json"
-                    },
+                headers:{
+                    "Content-Type":
+                    "application/json"
+                },
 
-                    body:
-                    JSON.stringify(nota)
-                }
-            );
-        }
-
-        form.reset();
-
-        carregarNotas();
-
-    } catch (erro) {
-
-        console.error(erro);
-
-        alert(
-            "Erro ao salvar nota."
+                body:
+                JSON.stringify(nota)
+            }
         );
     }
+
+    form.reset();
+
+    carregarNotas();
+
+} catch (erro) {
+
+    console.error(erro);
+
+    alert(
+        "Erro ao salvar nota."
+    );
 }
 
+}
 );
 
 /* =========================
@@ -329,40 +332,36 @@ async function excluirNota(id) {
 
 const confirmar =
 confirm(
-    "Deseja excluir esta nota?"
+"Deseja excluir esta nota?"
 );
 
 if (!confirmar) {
-    return;
+return;
 }
 
 try {
 
-    await fetch(
-        `${API}/${id}`,
-        {
-            method:"DELETE"
-        }
-    );
+await fetch(
+    `${API}/${id}`,
+    {
+        method:"DELETE"
+    }
+);
 
-    carregarNotas();
+carregarNotas();
 
 } catch (erro) {
 
-    console.error(erro);
+console.error(erro);
 
-    alert(
-        "Erro ao excluir nota."
-    );
+alert(
+    "Erro ao excluir nota."
+);
+
 }
 
 }
 
-/* =========================
-INICIAR
-========================= */
-
-carregarNotas();
 /* =========================
 MENU
 ========================= */
@@ -375,6 +374,8 @@ document.getElementById("sidebar");
 
 const overlay =
 document.getElementById("overlay");
+
+if(menuBtn && sidebar && overlay){
 
 menuBtn.addEventListener(
     "click",
@@ -395,3 +396,11 @@ overlay.addEventListener(
         overlay.classList.remove("active");
     }
 );
+
+}
+
+/* =========================
+INICIAR
+========================= */
+
+carregarNotas();
