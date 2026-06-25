@@ -90,6 +90,8 @@ data.notas || data;
 
 notas.forEach(nota => {
 
+    console.log("NOTA:", nota);
+
     const div =
     document.createElement("div");
 
@@ -124,7 +126,7 @@ notas.forEach(nota => {
             <button
                 class="editar-btn"
                 onclick="editarNota(
-                    ${nota.id},
+    ${nota.id || nota.id_nota},
                     ${JSON.stringify(nota.titulo)},
                     ${JSON.stringify(nota.descricao)},
                     ${JSON.stringify(nota.tipo)},
@@ -138,7 +140,7 @@ notas.forEach(nota => {
 
             <button
                 class="delete-btn"
-                onclick="excluirNota(${nota.id})">
+                onclick="excluirNota(${nota.id || nota.id_nota})">
 
                 Excluir
 
