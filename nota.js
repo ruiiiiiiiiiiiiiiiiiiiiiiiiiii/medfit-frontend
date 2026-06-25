@@ -67,7 +67,7 @@ async function carregarNotas() {
 try {
 
 const res =
-await fetch(API);
+await fetch("https://back-end-academia-six.vercel.app/notas");
 
 if (!res.ok) {
     throw new Error(
