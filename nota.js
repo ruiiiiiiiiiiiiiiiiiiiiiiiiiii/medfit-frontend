@@ -78,9 +78,17 @@ if (!res.ok) {
 const data =
 await res.json();
 
+console.log(
+    "NOTAS RECEBIDAS:",
+    data
+);
+
 lista.innerHTML = "";
 
-data.notas.forEach(nota => {
+const notas =
+data.notas || data;
+
+notas.forEach(nota => {
 
     const div =
     document.createElement("div");
