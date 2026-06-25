@@ -1,5 +1,5 @@
 const API_URL =
-"https://back-end-academia-six.vercel.app/usuarios/trocar-senha";
+"https://back-end-academia-six.vercel.app/usuarios";
 
 async function trocarSenha() {
 
