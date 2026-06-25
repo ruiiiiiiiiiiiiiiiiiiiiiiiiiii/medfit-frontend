@@ -42,7 +42,7 @@ document.querySelector(
 }
 
 const API =
-"https://back-end-academia-six.vercel.app";
+"https://back-end-academia-six.vercel.app/notas";
 
 const form =
 document.getElementById("formNota");
